@@ -23,7 +23,6 @@ app.get("/", async (req, res) => {
 
 app.post("/short", async (req, res) => {
 	let url = await Url.find({ fullUrl: req.body.fullUrl });
-	console.log(url);
 	if (url.length !== 0) {
 		return res.redirect("/");
 	}

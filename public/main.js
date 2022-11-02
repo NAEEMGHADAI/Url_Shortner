@@ -10,7 +10,6 @@ del.forEach((element) => {
 
 function copyFunction() {
 	let value = this.parentNode.parentNode.childNodes[3].childNodes[1].innerText;
-	console.log(this.parentNode.parentNode.childNodes[3].childNodes[1].innerText);
 	navigator.clipboard.writeText(value);
 	alert("Copied the text: " + value);
 }
@@ -18,7 +17,6 @@ function copyFunction() {
 async function deleteFunction() {
 	let value = this.parentNode.parentNode.childNodes[3].childNodes[1].href;
 	let short = value.slice(-9);
-	console.log(value.slice(-9));
 	await fetch(`/delete`, {
 		method: "delete",
 		headers: { "Content-type": "application/json" },
