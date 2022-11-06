@@ -1,0 +1,9 @@
+.form {
+	margin: 150px 35%;
+	padding: 30px;
+}
+@media only screen and (max-width: 750px) {
+	.form {
+		margin: 100px 10%;
+	}
+}
