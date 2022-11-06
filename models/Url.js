@@ -1,7 +1,11 @@
-import mongoose from "mongoose";
-import shortId from "shortid";
+const mongoose = require("mongoose");
+const shortId = require("shortid");
 
 const UrlSchema = new mongoose.Schema({
+	userId: {
+		type: String,
+		required: true,
+	},
 	fullUrl: {
 		type: String,
 		required: true,
@@ -22,4 +26,4 @@ const UrlSchema = new mongoose.Schema({
 	},
 });
 
-export default mongoose.model("Url", UrlSchema);
+module.exports = mongoose.model("Url", UrlSchema);

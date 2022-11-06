@@ -17,7 +17,7 @@ function copyFunction() {
 async function deleteFunction() {
 	let value = this.parentNode.parentNode.childNodes[3].childNodes[1].href;
 	let short = value.slice(-9);
-	await fetch(`/delete`, {
+	await fetch(`short/delete`, {
 		method: "delete",
 		headers: { "Content-type": "application/json" },
 		body: JSON.stringify({
