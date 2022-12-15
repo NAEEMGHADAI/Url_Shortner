@@ -7,6 +7,7 @@ const MongoStore = require("connect-mongo");
 const connectDB = require("./config/db");
 const mainRoutes = require("./routes/main.js");
 const shortRoutes = require("./routes/short.js");
+const shortController = require("./controllers/short.js");
 
 const app = express();
 
@@ -28,12 +29,12 @@ app.use(logger("dev"));
 
 // Sessions
 app.use(
-	session({
-		secret: "keyboard cat",
-		resave: false,
-		saveUninitialized: false,
-		store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
-	})
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
+  })
 );
 
 // Passport middleware
@@ -44,7 +45,7 @@ app.use(flash());
 
 app.use("/", mainRoutes);
 app.use("/short", shortRoutes);
-
+app.get("/:shortUrl", shortController.redirectUrl);
 // app.get("/", async (req, res) => {
 // 	let shortUrl = await Url.find();
 // 	res.render("index.ejs", { shortUrl, base: process.env.BASE });
@@ -89,5 +90,5 @@ app.use("/short", shortRoutes);
 // Server Setup
 const PORT = 3000;
 app.listen(process.env.PORT || PORT, () => {
-	console.log(`Server is running at PORT ${process.env.PORT || PORT}`);
+  console.log(`Server is running at PORT ${process.env.PORT || PORT}`);
 });
