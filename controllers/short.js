@@ -17,7 +17,7 @@ module.exports = {
     }
   },
   createShort: async (req, res) => {
-    console.log(req.user.id)
+    // console.log(req.user.id)
     let url = await Url.find({
       fullUrl: req.body.fullUrl,
       userId: req.user.id,
